@@ -1,17 +1,39 @@
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 import 'reflect-metadata';
 
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import 'express-async-errors';
+
+import AppError from '@shared/errors/AppError';
 import routes from './routes';
 
-import '@shared/infra/typeorm/index';
+import '@shared/infra/typeorm';
 import '@shared/container';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-
 app.use(routes);
+app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
+  if (err instanceof AppError) {
+    return response.status(err.statusCode).json({
+      status: 'error',
+      message: err.message,
+    });
+  }
+  console.error(err);
 
-app.listen(3333, () => {
-  console.log('Server on port: 3333');
+  return response.status(500).json({
+    status: 'error',
+    message: 'Internal server error',
+  });
+});
+
+app.listen(process.env.APP_PORT || 3333, () => {
+  console.log('Server Online on Port 3333');
 });
