@@ -1,7 +1,6 @@
 export default {
   jwt: {
-    privateKey: process.env.APP_PRIVATE_KEY || 'default',
-    publicKey: process.env.APP_PUBLIC_KEY || 'default',
+    secret: process.env.APP_SECRET || 'default',
     expiresIn: '1d',
   },
 };

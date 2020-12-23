@@ -22,10 +22,10 @@ export default function ensureAuthenticated(
     throw new AppError('JWT token is missing', 401);
   }
 
-  const [, token] = authHeader.split(' '); // Neste caso a função split vai transformar o valor do request da constante authHeader em um array, separando assim o Bearer do token no Header da requisição, como o Bearer não será necessário, ele não é declarado na desestruturação das variaveis, apenas o token foi declarado.
+  const [, token] = authHeader.split(' ');
 
   try {
-    const decoded = verify(token, authConfig.jwt.publicKey);
+    const decoded = verify(token, authConfig.jwt.secret);
 
     const { sub } = decoded as ITokenPayLoad;
 
