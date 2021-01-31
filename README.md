@@ -15,7 +15,7 @@
 - This project is about a API for authentication purposes developed in Node with the authentication based on the library JWT(JSON Web Token), using Typescript and DDD pattern.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js][nodejs] + [Yarn][yarn] installed on your computer.
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) + [Yarn](https://yarnpkg.com/) installed on your computer.
 
 From your command line:
 
@@ -29,7 +29,7 @@ $ git clone https://github.com/RafaelLeveske/node-auth-api.git
 $ yarn install
 
 # Create database
-Create a database with the same name included in the ormconfig.json file.
+Create a database with the same name included on ormconfig.json file.
 ```
 
 ## ⛏️ Built Using <a name = "built_using"></a>
